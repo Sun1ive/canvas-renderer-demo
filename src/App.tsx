@@ -17,6 +17,7 @@ import nanoid from 'nanoid';
 import qr from 'qrcode';
 import JsBarcode from 'jsbarcode';
 import './App.css';
+import { AppRouter } from './router';
 
 const App: React.FC = () => {
   const [{ x, y }, setState] = useState({
@@ -87,69 +88,71 @@ const App: React.FC = () => {
 
   const ref = createRef();
 
-  return (
-    <div className="App">
-      <input
-        type="text"
-        placeholder="width"
-        value={width}
-        onChange={({ target: { value } }) =>
-          setWindowSize(s => ({ ...s, width: +value }))
-        }
-      />
+  // return (
+  //   <div className="App">
+  //     <input
+  //       type="text"
+  //       placeholder="width"
+  //       value={width}
+  //       onChange={({ target: { value } }) =>
+  //         setWindowSize(s => ({ ...s, width: +value }))
+  //       }
+  //     />
 
-      <input
-        type="text"
-        placeholder="height"
-        onChange={({ target: { value } }) =>
-          setWindowSize(s => ({ ...s, height: +value }))
-        }
-        value={height}
-      />
+  //     <input
+  //       type="text"
+  //       placeholder="height"
+  //       onChange={({ target: { value } }) =>
+  //         setWindowSize(s => ({ ...s, height: +value }))
+  //       }
+  //       value={height}
+  //     />
 
-      <button onClick={applyWindow}>Apply to window</button>
+  //     <button onClick={applyWindow}>Apply to window</button>
 
-      <Stage
-        style={{ border: '1px solid black', margin: 'auto' }}
-        width={size.width}
-        height={size.height}
-        ref={ref.current as any}
-      >
-        <Layer>
-          {/* <Shape
-            draggable
-            x={x}
-            y={y}
-            onDragStart={console.log}
-            sceneFunc={context => {
-              qr.toCanvas(context.canvas._canvas, 'Element');
-              // qr.toCanvas()
-            }}
-          /> */}
+  //     <Stage
+  //       style={{ border: '1px solid black', margin: 'auto' }}
+  //       width={size.width}
+  //       height={size.height}
+  //       ref={ref.current as any}
+  //     >
+  //       <Layer>
+  //         {/* <Shape
+  //           draggable
+  //           x={x}
+  //           y={y}
+  //           onDragStart={console.log}
+  //           sceneFunc={context => {
+  //             qr.toCanvas(context.canvas._canvas, 'Element');
+  //             // qr.toCanvas()
+  //           }}
+  //         /> */}
 
-          {/* <Text
-            onDragEnd={e => {
-              setState({
-                x: e.target.x(),
-                y: e.target.y()
-              });
-            }}
-            draggable
-            y={y}
-            x={x}
-            fontSize={30}
-            text="hello"
-          /> */}
+  //         {/* <Text
+  //           onDragEnd={e => {
+  //             setState({
+  //               x: e.target.x(),
+  //               y: e.target.y()
+  //             });
+  //           }}
+  //           draggable
+  //           y={y}
+  //           x={x}
+  //           fontSize={30}
+  //           text="hello"
+  //         /> */}
 
-          {renderer}
-        </Layer>
-      </Stage>
-      {/* <canvas id="canva"></canvas> */}
-      <button onClick={addBarcode}>add barcode</button>
-      <button onClick={addText}>Add text</button>
-      <button onClick={addQr}>ADd qr</button>
-    </div>
-  );
+  //         {renderer}
+  //       </Layer>
+  //     </Stage>
+  //     {/* <canvas id="canva"></canvas> */}
+  //     <button onClick={addBarcode}>add barcode</button>
+  //     <button onClick={addText}>Add text</button>
+  //     <button onClick={addQr}>ADd qr</button>
+  //   </div>
+  // )
+
+  return <AppRouter />;
 };
 
 export default App;
