@@ -1,8 +1,9 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
-		"module": "esnext",
-		"lib": ["es5", "es6", "dom.iterable", "dom", "es2018"],
+		"target": "es6",
+		"baseUrl": ".",
+		"module": "commonjs",
+		"lib": ["es5", "es6", "dom"],
 		"rootDir": "src",
 		"outDir": "dist",
 		"allowJs": false,
@@ -15,17 +16,11 @@
 		"noImplicitReturns": true,
 		"moduleResolution": "node",
 		"esModuleInterop": true,
+		"jsx": "react",
 		"inlineSourceMap": true,
 		"experimentalDecorators": true,
-		"jsx": "react",
 		"strictPropertyInitialization": false,
-		"newLine": "LF",
-		"skipLibCheck": true,
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true
+		"newLine": "LF"
 	},
-	"include": ["types/**/*.d.ts", "src"]
+	"include": ["types/**/*.d.ts", "src/**/*.tsx", "src/**/*.ts"]
 }
