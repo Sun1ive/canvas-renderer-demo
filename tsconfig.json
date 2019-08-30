@@ -1,25 +1,31 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  },
-  "include": [
-    "src"
-  ]
+	"compilerOptions": {
+		"target": "es2017",
+		"module": "esnext",
+		"lib": ["es5", "es6", "dom.iterable", "dom", "es2018"],
+		"rootDir": "src",
+		"outDir": "dist",
+		"allowJs": false,
+		"removeComments": false,
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noImplicitReturns": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"inlineSourceMap": true,
+		"experimentalDecorators": true,
+		"jsx": "react",
+		"strictPropertyInitialization": false,
+		"newLine": "LF",
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"include": ["types/**/*.d.ts", "src"]
 }

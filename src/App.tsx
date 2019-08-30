@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppRouter } from './router';
-import './App.css';
 
 const App: React.FC = () => {
-  return <AppRouter />;
+	useEffect(() => {
+		document.ondragover = document.ondrop = (ev) => {
+			ev.preventDefault();
+		};
+	}, []);
+
+	return <AppRouter />;
 };
 
 export default App;
