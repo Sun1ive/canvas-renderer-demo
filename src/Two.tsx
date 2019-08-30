@@ -108,15 +108,11 @@ const MyDraggable: FC<IMyDraggableProps> = ({ children }) => {
     (e: React.DragEvent<HTMLElement>) => {
       // e.preventDefault();
       const { clientX, clientY } = e;
-      if (
-        e.nativeEvent &&
-        Object.is(e.nativeEvent.fromElement, e.nativeEvent.toElement)
-      ) {
-        debugger;
-      }
+
       if (clientX * clientY === 0) {
         debugger;
       }
+
       const {
         parentElement,
         clientWidth: elementWidth,
