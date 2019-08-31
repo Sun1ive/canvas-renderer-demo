@@ -34,7 +34,7 @@
 			"category": "public.app-category.utilities"
 		},
 		"files": [
-			"build/**/*",
+			"dist/**/*",
 			"node_modules/**/*"
 		],
 		"directories": {
@@ -42,16 +42,18 @@
 		}
 	},
 	"scripts": {
-		"watch": "tsc --watch",
+		"watch": "tsc --watch -p ./tsconfig.dev.json",
 		"start": "react-scripts start",
 		"lint": "prettier --write \"src/**/*{.ts,.tsx,.js}\"",
 		"dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
 		"app": "electron ./public/electron.js",
 		"build": "rescripts build",
 		"test": "rescripts test",
+		"tsc": "tsc -p ./tsconfig.dev.json",
 		"postinstall": "electron-builder install-app-deps",
 		"eject": "react-scripts eject",
-		"dist": "rimraf dist && npm run build && electron-builder"
+		"dist": "electron-builder",
+		"postdist": "rimraf dist app"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
