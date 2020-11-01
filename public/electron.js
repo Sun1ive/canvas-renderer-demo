@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require('electron');
-
 const path = require('path');
 const isDev = require('electron-is-dev');
+const indexPath = path.resolve(path.join(process.cwd(), 'build', 'index.html'));
 
 let mainWindow;
 
@@ -17,7 +17,7 @@ function createWindow() {
 	//     : `file://${path.join(__dirname, '../build/index.html')}`
 	// );
 
-	mainWindow.loadFile(`../index.html`);
+	mainWindow.loadFile(indexPath);
 	if (isDev) {
 		// Open the DevTools.
 		//BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
