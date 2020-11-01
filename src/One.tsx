@@ -1,5 +1,5 @@
 import { classToClass, plainToClass } from 'class-transformer';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { NumericInput } from './components/numeric.input/numeric.input';
 import { TemplateDto } from './dto/template.dto';
 import { getPersistedData, persistData } from './helpers/persist.data';
@@ -79,9 +79,13 @@ export const One = () => {
 		});
 	};
 
+	useEffect(() => {
+		console.log("Render")
+	});
+
 	const isChanged = useMemo(() => {
 		if (templateLib.length === 0) {
-			return false;
+			return true;
 		}
 		return !equal(template, templateLib[activeTemplateIndex].bounds);
 	}, [template, templateLib, activeTemplateIndex]);
@@ -120,7 +124,22 @@ export const One = () => {
 					<Button
 						onClick={() => {
 							setTemplateLib((prev) => {
-								const newState = [...prev, { name: 'custom' + Date.now(), bounds: template.bounds }];
+								const newState = [...prev];
+								newState[activeTemplateIndex] = template;
+								persistData(TEMPLATE_LIB_KEY, JSON.stringify(newState));
+								return newState;
+							});
+						}}
+						style={{ marginTop: 8 }}
+						variant="contained"
+						color="primary"
+					>
+						Update
+					</Button>
+					<Button
+						onClick={() => {
+							setTemplateLib((prev) => {
+								const newState = [...prev, { name: template.name, bounds: template.bounds }];
 								persistData(TEMPLATE_LIB_KEY, JSON.stringify(newState));
 								return newState;
 							});
@@ -130,13 +149,12 @@ export const One = () => {
 						variant="contained"
 						color="primary"
 					>
-						Save
+						Add
 					</Button>
 					<Button
 						onClick={() => {
 							setTemplateLib((prev) => {
 								const newState = [...prev].filter((_, idx) => idx !== activeTemplateIndex);
-								console.log(newState);
 								persistData(TEMPLATE_LIB_KEY, JSON.stringify(newState));
 								return newState;
 							});
